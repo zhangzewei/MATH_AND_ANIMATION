@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
+import createRouters from './routers';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import 'antd/dist/antd.css';
+import './normalize.css';
+
+const routes = createRouters();
+const Root = () => (
+  <HashRouter>
+    <Switch>
+      {routes.map(route => <Route key={route.path || 'notmatch'} {...route} />)}
+    </Switch>
+  </HashRouter>
+);
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
