@@ -6,6 +6,7 @@ import createRouters from './routers';
 
 import 'antd/dist/antd.css';
 import './normalize.css';
+import './index.css';
 
 const routes = createRouters();
 const Root = () => (

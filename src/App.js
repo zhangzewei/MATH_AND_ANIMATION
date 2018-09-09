@@ -7,10 +7,29 @@ import './App.scss';
 const { Content, Sider } = Layout;
 
 class App extends Component {
+
+  constructor(props) {
+    super();
+    const currentMenu = this.getCurrentMenu(props);
+    this.state = {
+      currentMenu,
+    }
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    const currentMenu = this.getCurrentMenu(nextProps);
+    this.setState({ currentMenu });
+  }
+
+  getCurrentMenu = (path) => {
+    const menu = path.location.pathname;
+    return menu.split('/')[1];
+  }
+
   renderMenu = () => (
-    <Menu theme="dark" mode="inline">
+    <Menu theme="dark" mode="inline" selectedKeys={[this.state.currentMenu || '/']}>
       {MENUS.map(m => (
-        <Menu.Item key={m.name}>
+        <Menu.Item key={m.path}>
           <Link to={m.path}><span className="nav-text">{m.name}</span></Link>
         </Menu.Item>
       ))}
@@ -30,14 +49,14 @@ class App extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout style={{ height: '100%' }}>
         <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
           <Link to="/">
             <div className="logo">MATH AND ANIMATION</div>
           </Link>
           {this.renderMenu()}
         </Sider>
-        <Layout style={{ marginLeft: 200 }}>
+        <Layout style={{ marginLeft: 200, height: '100%' }}>
           <Content style={{ background: '#fff' }}>
             {this.renderRouters()}
           </Content>
