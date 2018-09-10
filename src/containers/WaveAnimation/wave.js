@@ -21,8 +21,8 @@ export default class Wave extends Component {
   }
 
   checkOutYoffset(offset) {
-    if (offset > 1) {
-      return 0.6;
+    if (offset >= 1) {
+      return 0.99;
     } else {
       return offset
     }
