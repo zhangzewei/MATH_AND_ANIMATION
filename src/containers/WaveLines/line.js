@@ -1,4 +1,4 @@
-class Wave {
+class Line {
   constructor(canvas, options) {
     this.canvas = canvas;
     this.options = options;
@@ -33,4 +33,4 @@ class Wave {
   }
 }
 
-export default Wave;
+export default Line;

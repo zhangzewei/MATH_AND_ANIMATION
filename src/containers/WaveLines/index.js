@@ -37,7 +37,7 @@ export default class WaveLines extends Component {
       waves.push(new Line(this.canvas, {
         start,
         stop,
-        lineWidth: i,
+        lineWidth: 3,
         xSpeed: this.valueMapping(Math.random(), 0, 1, 0.05, 0.08),
         amplitude: this.valueMapping(Math.random(), 0, 1, 0.05, 0.08),
         offset: Math.random() * 100

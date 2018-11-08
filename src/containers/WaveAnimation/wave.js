@@ -57,6 +57,7 @@ export default class Wave extends Component {
 
     for (let x = startX; x < startX + canvasWidth; x += 20 / canvasWidth) {
       // y = A sin(Bx + C) + D
+      // why use (1 - yOffset) because canvas start at [0,0] from top to bottom
       const y = waveHeight * Math.sin((startX + x) * waveWidth + xOffset) + (1 - yOffset) * canvasHeight;
       points.push([x, y]);
       ctx.lineTo(x, y);
